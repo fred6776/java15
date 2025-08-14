@@ -14,6 +14,19 @@ public class AviaSoulsTest {
     }
 
     @Test
+    void shouldFindAll() {
+        AviaSouls manager = new AviaSouls();
+        manager.add(new Ticket("SPB", "SVO", 10000, 1000, 1400));
+        manager.add(new Ticket("SPB", "SVO", 12000, 1100, 1500));
+        manager.add(new Ticket("SPB", "SVO", 8000, 1100, 1500));
+        manager.add(new Ticket("SPB", "SVO", 15000, 1000, 1400));
+        Ticket[] result = manager.findAll();
+        int expected = 4;
+        int actual = result.length;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void shouldSearchSort() {
         AviaSouls manager = new AviaSouls();
         manager.add(new Ticket("SPB", "SVO", 10000, 1000, 1400));
