@@ -27,6 +27,27 @@ public class AviaSoulsTest {
     }
 
     @Test
+    void shouldSearchSingle() {
+        AviaSouls manager = new AviaSouls();
+        manager.add(new Ticket("SPB", "SVO", 10000, 1000, 1400));
+        manager.add(new Ticket("SPB", "SNO", 12000, 1100, 1500));
+        manager.add(new Ticket("SPB", "SVO", 8000, 1100, 1500));
+        manager.add(new Ticket("SPB", "SVO", 15000, 1000, 1400));
+        Ticket[] result = manager.search("SPB", "SNO");
+        int expected = 12000;
+        int actual = result[0].getPrice();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSearchEmpty() {
+        AviaSouls manager = new AviaSouls();
+        Ticket[] expected = {};
+        Ticket[] actual = manager.search("SPB", "SVO");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
     void shouldSearchSort() {
         AviaSouls manager = new AviaSouls();
         manager.add(new Ticket("SPB", "SVO", 10000, 1000, 1400));
