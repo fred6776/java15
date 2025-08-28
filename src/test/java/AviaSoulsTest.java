@@ -33,10 +33,9 @@ public class AviaSoulsTest {
         manager.add(new Ticket("SPB", "SNO", 12000, 1100, 1500));
         manager.add(new Ticket("SPB", "SVO", 8000, 1100, 1500));
         manager.add(new Ticket("SPB", "SVO", 15000, 1000, 1400));
-        Ticket[] result = manager.search("SPB", "SNO");
-        int expected = 12000;
-        int actual = result[0].getPrice();
-        Assertions.assertEquals(expected, actual);
+        Ticket[] expected = new Ticket[]{new Ticket("SPB", "SNO", 12000, 1100, 1500)};
+        Ticket[] actual = manager.search("SPB", "SNO");
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
